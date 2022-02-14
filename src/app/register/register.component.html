@@ -1,0 +1,65 @@
+
+
+<div class="container">
+  <form #registerForm="ngForm" (submit)="getData(registerForm.value)">
+    <h2>{{'Title' | translate}}</h2>
+    <div class="register">
+      <label>{{'Name' | translate}}</label>
+      <input
+        type="text"
+        class="form-control"
+        ngModel
+        name="name"
+        placeholder="Enter Your Name"
+      />
+      <label>{{'E-mail' | translate}}</label>
+      <input
+        type="email"
+        class="form-control"
+        ngModel
+        name="email"
+        placeholder="Enter Your E-mail"
+      />
+      <label>{{'Phone Number' | translate}}</label>
+      <input
+        type="number"
+        class="form-control"
+        ngModel
+        name="number"
+        placeholder="Enter Your Phone Number"
+      />
+      <div class="form-group">
+        <label>{{'Merchant Category' | translate}}</label>
+        <select class="form-control" ngModel name="merchant">
+          <option value="Electrical-Devices">Electrical Devices</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Home-Electrical-Appliances">
+            Home Electrical Appliances
+          </option>
+          <option value="Computers">Computers</option>
+          <option value="Smart-Devices">Smart Devices</option>
+        </select>
+      </div>
+      <br />
+      <button type="button">{{'Register' | translate}}</button>
+    </div>
+  </form>
+</div>
+
+<table class="merchantTable" border="1">
+  <tr>
+    <th>ID</th>
+    <th>Merchant Category</th>
+    <th>Assigned User ID</th>
+    <th>Created Time</th>
+    <th>Modified Time</th>
+  </tr>
+  <tr *ngFor="let merchant of merchants.result">
+    <td>{{ merchant?.id }}</td>
+    <td>{{ merchant?.merchant_category }}</td>
+    <td>{{ merchant?.assigned_user_id }}</td>
+    <td>{{ merchant?.createdtime }}</td>
+    <td>{{ merchant?.modifiedtime }}</td>
+  </tr>
+</table>
+
